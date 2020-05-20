@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class BeanConfig {
 
-	@Bean
+	/*@Bean
     ServletRegistrationBean h2servletRegistration(){
         @SuppressWarnings({ "unchecked", "rawtypes" })
 		ServletRegistrationBean registrationBean = new ServletRegistrationBean(
@@ -16,5 +16,5 @@ public class BeanConfig {
         registrationBean.addUrlMappings("/console/*");
         return registrationBean;
     }
-
+*/
 }

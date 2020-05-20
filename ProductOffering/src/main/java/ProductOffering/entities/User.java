@@ -1,5 +1,8 @@
 package ProductOffering.entities;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,11 +10,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
 @Table(name="User_Details")
-public class User{
+public class User implements Serializable{
+	private static final long serialVersionUID = -3009157732242241606L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "id")
 	private Long id;
+	@Column(name = "firstName")
 	private String firstName;
+	@Column(name = "lastName")
 	private String lastName;
 	public User(String firstName, String lastName, String mobileNo, String password, String email) {
 		super();
@@ -21,8 +28,11 @@ public class User{
 		this.password = password;
 		this.email = email;
 	}
+	@Column(name = "mobileNo")
 	private String mobileNo;
+	@Column(name = "password")
 	private String password;
+	@Column(name = "email")
 	private String email;
 	public User()
 	{}
