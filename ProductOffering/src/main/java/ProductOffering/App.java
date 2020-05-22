@@ -17,6 +17,7 @@ public class App {
 	
 	public static void main(String[] args) {
 		SpringApplication.run(App.class, args);
+		System.setProperty("java.security.auth.login.config", "src/main/resources/jaas.login.config");
 	}
 	 @Bean
 	  public CommandLineRunner demo(LoginRepository repository) {

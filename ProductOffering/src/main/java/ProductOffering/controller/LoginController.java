@@ -50,7 +50,7 @@ public class LoginController{
 	public ProductOfferingResponse authenticateUser(@RequestBody LoginDTO loginObj) {
 		List<User> userList =loginService.loginUser(loginObj);
 		ProductOfferingResponse response = new ProductOfferingResponse();
-		try {
+		/*try {
 			LoginContext loginContext = new LoginContext("jaasApplication", 
 					new LoginHandler());
 			loginContext.login();
@@ -58,11 +58,18 @@ public class LoginController{
 		} catch (LoginException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		if(userList!=null)
+		}*/
+		if(userList!=null&&userList.size()>0)
 		{
+			if(loginObj.getPassword().equals(userList.get(0).getPassword()))
+			{	
 			response.setStatus("success");
 			response.setMsg("user verified");
+			}
+			else{
+				response.setStatus("fail");
+				response.setMsg("Request Failed!");	
+			}
 		}
 		else{
 			response.setStatus("fail");
