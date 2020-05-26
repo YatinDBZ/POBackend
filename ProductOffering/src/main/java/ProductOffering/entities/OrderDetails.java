@@ -3,43 +3,42 @@ package ProductOffering.entities;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+@Entity
+@Table(name="Order_Details")
 public class OrderDetails {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int id;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "order_id")
 	private Order order;
 	
-	private String status;
-	
-	@Temporal(TemporalType.DATE)
-	private Date order_date;
+	@ManyToOne(cascade =  CascadeType.ALL)
+	@JoinColumn(name = "prod_id")
+	private Product prod;
 	
 	private int quantity;
 	
+	public OrderDetails() {}
+	
+
 	public Order getOrder() {
 		return order;
 	}
 	public void setOrder(Order order) {
 		this.order = order;
-	}
-	
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	
-	public Date getOrder_date() {
-		return order_date;
-	}
-	public void setOrder_date(Date order_date) {
-		this.order_date = order_date;
 	}
 	
 	public int getQuantity() {

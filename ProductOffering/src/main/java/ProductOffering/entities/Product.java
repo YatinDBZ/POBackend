@@ -1,14 +1,18 @@
 package ProductOffering.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="product")
+@Table(name="product_details")
 public class Product {
 	
 	@Id
@@ -24,6 +28,9 @@ public class Product {
 	
 	@Column(name="price")
 	private int price;
+	
+	@OneToMany(mappedBy = "prod")
+	private Set<OrderDetails> orderDetails = new HashSet<OrderDetails>();
 	
 	public int getProdId() {
 		return prodId;
